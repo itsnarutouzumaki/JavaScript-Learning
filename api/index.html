@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API</title>
+  <style>
+    body{
+      background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      height: 95vh;
+    }
+
+    .container{
+      text-align: center;
+      width: fit-content;
+      height: fit-content;
+      background-color: #d5a2a2;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 10px 10px;
+    }
+    .ticket {
+      background-color: #f2f2f2;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width :fit-content;
+      height: fit-content;
+      text-align: center;
+      margin: 10px;
+    }
+    .image{
+      height: 100px;
+      width: 100px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <h1>Enter The USERNAME of GITHUB</h1>
+  <input type="text" class="textArea">
+  <input type="button" value="Fetch" class="button">
+  </div>
+  <div class="ticket">
+    <img src="" class="image">
+    <p class="name"></p>
+  </div>
+  <br>
+  <p class="detail"></p>
+  <script>
+    const text=document.querySelector(".textArea");
+    const button=document.querySelector(".button");
+    const container=document.querySelector(".container");
+
+    button.addEventListener("click",function(e){
+        let URL="https://api.github.com/users/"+text.value;
+        text.value="";
+        console.log(URL);
+        display(URL);
+    });
+
+    function display(URL){
+      console.log(URL);
+      const htr = new XMLHttpRequest();
+      htr.open('GET', URL);
+      htr.onload = function() {
+        const data = JSON.parse(this.responseText);
+        console.log(data);
+        const img=document.querySelector("img");
+        img.src=data.avatar_url;
+        const name=document.querySelector(".name");
+        name.innerHTML=data.name;
+        document.querySelector(".detail").innerHTML=data;
+      };
+      htr.send();
+    }
+  </script>
+</body>
+</html>

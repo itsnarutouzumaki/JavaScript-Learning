@@ -1,0 +1,26 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+.container{
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #686767;
+  height: fit-content;
+  width: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 10px;
+}
+
+.start, .stop{
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 4px 4px 4px 4px  red;
+}
